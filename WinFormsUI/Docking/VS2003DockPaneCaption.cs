@@ -7,6 +7,7 @@ namespace WeifenLuo.WinFormsUI.Docking
     /// <include file='CodeDoc/DockPaneCaptionVS2003.xml' path='//CodeDoc/Class[@name="DockPaneCaptionVS2003"]/ClassDef/*'/>
     internal class VS2003DockPaneCaption : DockPaneCaptionBase
     {
+        private static object imageLock = new object();
         #region consts
         private const int _TextGapTop = 2;
         private const int _TextGapBottom = 0;
@@ -105,9 +106,15 @@ namespace WeifenLuo.WinFormsUI.Docking
         protected virtual Image ImageCloseEnabled
         {
             get
-            {	
+            {
                 if (_imageCloseEnabled == null)
-                    _imageCloseEnabled = ResourcesVS2003.DockPaneCaption_CloseEnabled;
+                {
+                    lock (imageLock)
+                    {
+                        if (_imageCloseEnabled == null)
+                            _imageCloseEnabled = ResourcesVS2003.DockPaneCaption_CloseEnabled;
+                    }
+                }
                 return _imageCloseEnabled;
             }
         }
@@ -117,9 +124,15 @@ namespace WeifenLuo.WinFormsUI.Docking
         protected virtual Image ImageCloseDisabled
         {
             get
-            {	
+            {
                 if (_imageCloseDisabled == null)
-                    _imageCloseDisabled = ResourcesVS2003.DockPaneCaption_CloseDisabled;
+                {
+                    lock (imageLock)
+                    {
+                        if (_imageCloseDisabled == null)
+                            _imageCloseDisabled = ResourcesVS2003.DockPaneCaption_CloseDisabled;
+                    }
+                }
                 return _imageCloseDisabled;
             }
         }
@@ -129,9 +142,15 @@ namespace WeifenLuo.WinFormsUI.Docking
         protected virtual Image ImageAutoHideYes
         {
             get
-            {	
+            {
                 if (_imageAutoHideYes == null)
-                    _imageAutoHideYes = ResourcesVS2003.DockPaneCaption_AutoHideYes;
+                {
+                    lock (imageLock)
+                    {
+                        if (_imageAutoHideYes == null)
+                            _imageAutoHideYes = ResourcesVS2003.DockPaneCaption_AutoHideYes;
+                    }
+                }
                 return _imageAutoHideYes;
             }
         }
@@ -141,9 +160,15 @@ namespace WeifenLuo.WinFormsUI.Docking
         protected virtual Image ImageAutoHideNo
         {
             get
-            {	
+            {
                 if (_imageAutoHideNo == null)
-                    _imageAutoHideNo = ResourcesVS2003.DockPaneCaption_AutoHideNo;
+                {
+                    lock (imageLock)
+                    {
+                        if (_imageAutoHideNo == null)
+                            _imageAutoHideNo = ResourcesVS2003.DockPaneCaption_AutoHideNo;
+                    }
+                }
                 return _imageAutoHideNo;
             }
         }
@@ -153,9 +178,15 @@ namespace WeifenLuo.WinFormsUI.Docking
         protected virtual string ToolTipClose
         {
             get
-            {	
+            {
                 if (_toolTipClose == null)
-                    _toolTipClose = Strings.DockPaneCaption_ToolTipClose;
+                {
+                    lock (imageLock)
+                    {
+                        if (_toolTipClose == null)
+                            _toolTipClose = Strings.DockPaneCaption_ToolTipClose;
+                    }
+                }
                 return _toolTipClose;
             }
         }
@@ -165,9 +196,15 @@ namespace WeifenLuo.WinFormsUI.Docking
         protected virtual string ToolTipAutoHide
         {
             get
-            {	
+            {
                 if (_toolTipAutoHide == null)
-                    _toolTipAutoHide = Strings.DockPaneCaption_ToolTipAutoHide;
+                {
+                    lock (imageLock)
+                    {
+                        if (_toolTipAutoHide == null)
+                            _toolTipAutoHide = Strings.DockPaneCaption_ToolTipAutoHide;
+                    }
+                }
                 return _toolTipAutoHide;
             }
         }

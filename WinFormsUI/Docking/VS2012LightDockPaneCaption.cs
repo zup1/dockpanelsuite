@@ -50,6 +50,7 @@ namespace WeifenLuo.WinFormsUI.Docking
             }
         }
 
+        private static object imageLock = new object();
         #region consts
         private const int _TextGapTop = 3;
         private const int _TextGapBottom = 2;
@@ -68,8 +69,13 @@ namespace WeifenLuo.WinFormsUI.Docking
             get
             {
                 if (_imageButtonClose == null)
-                    _imageButtonClose = Resources.DockPane_Close;
-
+                {
+                    lock (imageLock)
+                    {
+                        if (_imageButtonClose == null)
+                            _imageButtonClose = Resources.DockPane_Close;
+                    }
+                }
                 return _imageButtonClose;
             }
         }
@@ -97,8 +103,13 @@ namespace WeifenLuo.WinFormsUI.Docking
             get
             {
                 if (_imageButtonAutoHide == null)
-                    _imageButtonAutoHide = Resources.DockPane_AutoHide;
-
+                {
+                    lock (imageLock)
+                    {
+                        if (_imageButtonAutoHide == null)
+                            _imageButtonAutoHide = Resources.DockPane_AutoHide;
+                    }
+                }
                 return _imageButtonAutoHide;
             }
         }
@@ -109,8 +120,13 @@ namespace WeifenLuo.WinFormsUI.Docking
             get
             {
                 if (_imageButtonDock == null)
-                    _imageButtonDock = Resources.DockPane_Dock;
-
+                {
+                    lock (imageLock)
+                    {
+                        if (_imageButtonDock == null)
+                            _imageButtonDock = Resources.DockPane_Dock;
+                    }
+                }
                 return _imageButtonDock;
             }
         }
@@ -138,8 +154,13 @@ namespace WeifenLuo.WinFormsUI.Docking
             get
             {
                 if (_imageButtonOptions == null)
-                    _imageButtonOptions = Resources.DockPane_Option;
-
+                {
+                    lock (imageLock)
+                    {
+                        if (_imageButtonOptions == null)
+                            _imageButtonOptions = Resources.DockPane_Option;
+                    }
+                }
                 return _imageButtonOptions;
             }
         }
@@ -239,9 +260,15 @@ namespace WeifenLuo.WinFormsUI.Docking
         private static string ToolTipClose
         {
             get
-            {	
+            {
                 if (_toolTipClose == null)
-                    _toolTipClose = Strings.DockPaneCaption_ToolTipClose;
+                {
+                    lock (imageLock)
+                    {
+                        if (_toolTipClose == null)
+                            _toolTipClose = Strings.DockPaneCaption_ToolTipClose;
+                    }
+                }
                 return _toolTipClose;
             }
         }
@@ -252,8 +279,13 @@ namespace WeifenLuo.WinFormsUI.Docking
             get
             {
                 if (_toolTipOptions == null)
-                    _toolTipOptions = Strings.DockPaneCaption_ToolTipOptions;
-
+                {
+                    lock (imageLock)
+                    {
+                        if (_toolTipOptions == null)
+                            _toolTipOptions = Strings.DockPaneCaption_ToolTipOptions;
+                    }
+                }
                 return _toolTipOptions;
             }
         }
@@ -262,9 +294,15 @@ namespace WeifenLuo.WinFormsUI.Docking
         private static string ToolTipAutoHide
         {
             get
-            {	
+            {
                 if (_toolTipAutoHide == null)
-                    _toolTipAutoHide = Strings.DockPaneCaption_ToolTipAutoHide;
+                {
+                    lock (imageLock)
+                    {
+                        if (_toolTipAutoHide == null)
+                            _toolTipAutoHide = Strings.DockPaneCaption_ToolTipAutoHide;
+                    }
+                }
                 return _toolTipAutoHide;
             }
         }
